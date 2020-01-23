@@ -1,0 +1,23 @@
+sl_no|tc_status|tc_name|api_type|tc_desc|name|current_date|api_url|header|expected_code|expected_res
+1|Active|200 Status Code(IMSI)|7|When request is ok by Web service,Http status code should be 200|Gagan V|2019-11-15 13:45:49|http://10.223.72.36:7879/gcapi/deviceV2?imsi=234509999999382|{'auth': 'gtadmin:gtadmin', 'contenttype': 'application/json'}|200|8946270044400161491|
+2|Active|200 Status Code(ICCID)|8|When request is ok by Web service,Http status code should be 200|Gagan V|2019-11-18 17:06:47|http://10.223.72.36:7879/gcapi/deviceV2?iccid=8946270044400161491|{'auth': 'gtadmin:gtadmin', 'contenttype': 'application/json'}|200|46769862382|
+3|Active|200 Status Code|7|When request is ok by Web service,Http status code should be 200|Gagan V|2019-11-18 17:06:47|http://10.223.72.36:7879/gcapi/deviceV2?iccid=8946270044400161491|{'auth': 'gtadmin:gtadmin', 'contenttype': 'application/json'}|200|46769862382|
+105|Active|200  Code|9||Gagan V|2019-12-05 17:35:26|http://10.223.72.36:7879/gcapi/device/attachDataPlan|{}|{'dataPlanId': 0,'deviceId': 'string','recurringPurchase': 'YES','comment': 'string'}||
+106|Active|success|12||Gagan V|2019-12-05 17:44:12|http://10.223.72.36:7879/gcapi/device/state?euiccid=11111|{}|||
+107|Active|hello how are you|13||Gagan V|2019-12-05 17:57:06|http://10.223.72.36:7879/gcapi/device/state?iccid=123123123123|{}|||
+108|Active|asdasd|13||Gagan V|2019-12-05 17:58:10|http://10.223.72.36:7879/gcapi/device/sessionInfo?iccid=1234233434|{}|||
+109|Active|Null value for iccid|12||Gagan V|2019-12-05 17:58:30|http://10.223.72.36:7879/gcapi/device/state?imsi=12112312312|{}|||
+110|Active|200  Code|13||Gagan V|2019-12-09 09:43:55|http://10.223.72.36:7879/gcapi/device/sessionInfo?=|{}|||
+111|Active|200  Code|14|                     |Gagan V|2019-12-09 09:45:00|http://10.223.72.36:7879/gcapi/device/dataUsgae?=|{}|||
+112|Active|500 code|14||Gagan V|2019-12-09 09:45:44|http://10.223.72.36:7879/gcapi/device/dataUsgae?=|{}|||
+113|Active|200  Code|14||Gagan V|2019-12-09 10:08:06|http://10.223.72.36:7879/gcapi/device/dataUsgae?IMSI=123123123&fromDate=2015-08-13toDate=2015-08-28|{}|||
+115|Active|asdasd|14||Gagan V|2019-12-09 10:11:50|http://10.223.72.36:7879/gcapi/device/dataUsgae?IMSI=234509999999141&fromDate=2015-08-09&toDate=2015-08-09|{'auth': 'asdasd asdasd'}|||
+116|Active|200  Code|14|wqeqweqweqwe|Gagan V|2019-12-09 10:20:44|http://10.223.72.36:7879/gcapi/device/dataUsgae?IMSI=234509999999141&fromDate=2015-07-29&toDate=2015-08-21|{'auth': 'dhivya Dhivya@123', 'acceptlanguage': 'qweqwe', 'url': 'qweqwe', 'reqid': 'qweqwe'}||500|hello
+117|Active|12121212|13|qweqw12121121212|1212121212|2019-12-09 10:21:24|http://10.223.72.36:7879/gcapi/device/sessionInfo?iccid=41223122312|{'auth': 'asd asd'}||200|Unauthorized
+118|Active|200  Code|15|efv34efg34ef3t43t4|Gagan V|2019-12-09 11:09:15|http://10.223.72.36:7879/gcapi/device/sessionHistory?IMSI=12312324&fromDate=2015-08-07&toDate=2015-08-08|{}|||
+119|Active|200  Code|14|qsdadas|asdasd|2019-12-09 11:09:58|http://10.223.72.36:7879/gcapi/device/dataUsgae?IMSI=12123123&fromDate=2015-08-04&toDate=2015-08-29|{}|||
+120|Active|asdasd|12||asdasd|2019-12-09 11:10:14|http://10.223.72.36:7879/gcapi/device/state?=|{}|||
+121|Active|200  Code|8|attachdataplan|Gagan V|2019-12-09 11:54:36|http://10.223.72.36:7879/gcapi/device/attachDataPlans|{}|{'dataPlanId': 0,'deviceId': 'string','recurringPurchase': 'YES','comment': 'string'}||
+122|Active|200  Code|10|modifydataplan|Gagan V|2019-12-09 11:55:27|http://10.223.72.36:7879/gcapi/device/modifyDataPlans|{}|{'dataPlanId': 0,'deviceId': 'string','action': 'CANCEL','comment': 'string'}||
+123|Active|200  Code|11|changestate|Gagan V|2019-12-09 12:04:33|http://10.223.72.36:7879/gcapi/device/changeState|{}|{'iccid': 'string','imsi': 'string','euiccid': 'string','newState': 'Activated'}||
+124|Active|200  Code|16|device_list|Gagan V|2019-12-09 12:12:51|http://10.223.72.36:7879/gcapi/device/list|{}|"{'start': 10,'length': 20,'search': {'data': 'string'},'order': [{ 'column': 0,'dir': 'desc'}]}
