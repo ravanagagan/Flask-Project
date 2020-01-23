@@ -1,0 +1,211 @@
+onclick form submit by id
+For example,if the ID of your form is �form_id�, the JavaScript code for the submit call is
+javascript onclick by form id.
+document.getElementById("form_id").submit();// Form submission
+Copy
+onclick form submit by class
+For example,if the class of your form is �form_class�, the JavaScript code for the submit call is
+javascript onclick by form class
+var x = document.getElementsByClassName("form_class");
+x[0].submit(); // Form submission
+Copy
+onclick form submit by name
+For example,if the name of your form is �form_name�, the JavaScript code for the submit call is
+javascript onclick by form name.
+var x = document.getElementsByName('form_name');
+x[0].submit(); // Form submission
+Copy
+onclick form submit by tag name
+For example,By the tag name�, the JavaScript code for the submit call is
+javascript onclick by form tag.
+var x = document.getElementsByTagName("form");
+x[0].submit();// Form submission
+Copy
+Complete FormValidation and Form Submission Using Javascript
+Our example, also contains a validation function to validate name and email fields.
+
+// Name and Email validation Function.
+function validation(){
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var emailReg = /^([w-.]+@([w-]+.)+[w-]{2,4})?$/;
+if( name ==='' || email ===''){
+alert("Please fill all fields...!!!!!!");
+return false;
+}else if(!(email).match(emailReg)){
+alert("Invalid Email...!!!!!!");
+return false;
+}else{
+return true;
+}
+}
+Copy
+ 
+
+Our complete HTML and Javascript codes are given below.
+
+HTML file: submit_javascript.html
+Given below our complete HTML code.
+
+<html>
+<head>
+<title>Javascript Form Submit Example</title>
+<!-- Include CSS File Here -->
+<link rel="stylesheet" href="submit_javascript.css"/>
+<!-- Include JS File Here -->
+<script src="submit_javascript.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="main">
+<form action="#" method="post" name="form_name" id="form_id" class="form_class" >
+<h2>Javascript Form Submit Example</h2>
+<label>Name :</label>
+<input type="text" name="name" id="name" placeholder="Name" />
+<label>Email :</label>
+<input type="text" name="email" id="email" placeholder="Valid Email" />
+<input type="button" name="submit_id" id="btn_id" value="Submit by Id" onclick="submit_by_id()"/>
+<input type="button" name="submit_name" id="btn_name" value="Submit by Name" onclick="submit_by_name()"/>
+<input type="button" name="submit_class" id="btn_class" value="Submit by Class" onclick="submit_by_class()"/>
+<input type="button" name="submit_tag" id="btn_tag" value="Submit by Tag" onclick="submit_by_tag()"/>
+</form>
+</div>
+</div>
+</body>
+</html>
+Copy
+Javscript File: submit_javascript.js
+Given below our complete Javascript code.
+
+// Submit form with id function.
+function submit_by_id() {
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+if (validation()) // Calling validation function
+{
+document.getElementById("form_id").submit(); //form submission
+alert(" Name : " + name + " n Email : " + email + " n Form Id : " + document.getElementById("form_id").getAttribute("id") + "nn Form Submitted Successfully......");
+}
+}
+
+// Submit form with name function.
+function submit_by_name() {
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+if (validation()) // Calling validation function
+{
+var x = document.getElementsByName('form_name');
+x[0].submit(); //form submission
+alert(" Name : " + name + " n Email : " + email + " n Form Name : " + document.getElementById("form_id").getAttribute("name") + "nn Form Submitted Successfully......");
+}
+}
+
+// Submit form with class function.
+function submit_by_class() {
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+if (validation()) // Calling validation function
+{
+var x = document.getElementsByClassName("form_class");
+x[0].submit(); //form submission
+alert(" Name : " + name + " n Email : " + email + " n Form Class : " + document.getElementById("form_id").getAttribute("class") + "nn Form Submitted Successfully......");
+}
+}
+
+// Submit form with HTML <form> tag function.
+function submit_by_tag() {
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+if (validation()) // Calling validation function
+{
+var x = document.getElementsByTagName("form");
+x[0].submit(); //form submission
+alert(" Name : " + name + " n Email : " + email + " n Form Tag : <form>nn Form Submitted Successfully......");
+}
+}
+
+// Name and Email validation Function.
+function validation() {
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var emailReg = /^([w-.]+@([w-]+.)+[w-]{2,4})?$/;
+if (name === '' || email === '') {
+alert("Please fill all fields...!!!!!!");
+return false;
+} else if (!(email).match(emailReg)) {
+alert("Invalid Email...!!!!!!");
+return false;
+} else {
+return true;
+}
+}
+Copy
+CSS File: submit_javascript.css
+
+Styling HTML elements.
+
+/* Below line is used for online Google font */
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+h2{
+background-color: #FEFFED;
+padding: 30px 35px;
+margin: -10px -50px;
+text-align:center;
+border-radius: 10px 10px 0 0;
+}
+hr{
+margin: 10px -50px;
+border: 0;
+border-top: 1px solid #ccc;
+margin-bottom: 40px;
+}
+div.container{
+width: 900px;
+height: 610px;
+margin:35px auto;
+font-family: 'Raleway', sans-serif;
+}
+div.main{
+width: 300px;
+padding: 10px 50px 10px;
+border: 2px solid gray;
+border-radius: 10px;
+font-family: raleway;
+float:left;
+margin-top:60px;
+}
+input[type=text]{
+width: 100%;
+height: 40px;
+padding: 5px;
+margin-bottom: 25px;
+margin-top: 5px;
+border: 2px solid #ccc;
+color: #4f4f4f;
+font-size: 16px;
+border-radius: 5px;
+}
+label{
+color: #464646;
+text-shadow: 0 1px 0 #fff;
+font-size: 14px;
+font-weight: bold;
+}
+#btn_id,#btn_name,#btn_class,#btn_tag{
+font-size: 16px;
+background: linear-gradient(#ffbc00 5%, #ffdd7f 100%);
+border: 1px solid #e5a900;
+color: #4E4D4B;
+font-weight: bold;
+cursor: pointer;
+width: 47.5%;
+border-radius: 5px;
+margin-bottom:10px;
+padding: 7px 0;
+}
+#btn_id:hover,#btn_name:hover,#btn_class:hover,#btn_tag:hover{
+background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
+}
+#btn_name,#btn_tag{
+margin-left: 10px;
+}
