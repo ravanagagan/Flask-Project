@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>API Automation</title>
+<style>
+table {
+width:60%;
+font-family:'Calibri';
+}
+
+th {
+color:white;
+font-family:'Calibri';
+}
+
+table, th, td {
+border: 1px solid white;
+border-collapse: collapse;
+font-family:'Calibri';
+}
+th, td {
+padding: 8px;
+text-align: left;
+color:white;
+font-family:'Calibri';
+}
+</style>
+</head>
+<body class="bg" background="{{ url_for('static', filename='img/w8.png') }}" style="width:100%; height:100%; background-position: center;">
+<center>
+  <br>
+<h2 style="color:white;font-family:'Calibri';">FAILED TEST CASE REPORT</h2><br><br>
+<table id = "mytable2" style="width:1000px; height:200px;">
+<tr>
+<th>S.No</th>
+<th>RUN ID</th>
+<th>TEST CASE ID</th>
+<th>TEST CASE DESCRIPTION</th>
+<th>REASON FOR FAILURE</th>
+</tr>
+{% for i in range(0,len_final) %}
+    <tr>
+        <td>{{final[i][0]}}</td>
+        <td>run id</td>
+        <td>{{final[i][0]}}</td>
+        <td>{{final[i][4]}}</td>
+        <td>result</td>
+    {%endfor%}
+    </tr>
+</table>
+</center>
+</body>
+<script>
+
+</script>
+</html>

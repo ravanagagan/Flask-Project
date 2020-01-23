@@ -1,0 +1,144 @@
+<html>
+   <head>
+      <title>API Automation</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link href="{{ url_for('static', filename='css/final.css') }}" rel="stylesheet" type="text/css" >
+   </head>
+   <body class="bg" background="{{ url_for('static', filename='img/w4.jpg') }}" style="width:100%; height:100%; background-position: center;
+      background-repeat: no-repeat;background-size: cover;">
+      <br>
+      <form action="http://127.0.0.1:5000/create" method="POST">
+         <ul class="form-style-1" >
+            <h5 style="font-family:'Calibri';color:white;"><b>ENTER THE DETAILS TO CREATE TESTCASE</b></h5>
+            <br>
+            <div class="row">
+               <div class ="column">
+                  <li class='main'><label style="font-family:'Calibri';color:white; font-size:15;">Created By<span class="required">*</span></label>
+                     <input type="text" name="createdby" id="createdby" style="font-family:'Calibri';font-size:12;" class="field-divided" placeholder="Enter Your Name" title="fill out this row " required=" ">
+                     &nbsp;<label  style="font-family:'Calibri';color:white; font-size:15;">Test Case Name<span class="required">*</span></label>
+                     <input type="text" name="tcname" id="tcname" style="font-family:'Calibri';font-size:12;" class="field-divided" placeholder="Enter the test case name" title="fill out this row " required=" ">
+                  </li>
+                  <li class='main'><label style="font-family:'Calibri';color:white; font-size:15;">Testcase Description<span class="required"></span></label>
+                     <textarea id="t" name="desc" rows=5 cols="25" style="font-family:'Calibri';font-size:12;" class="field-long" ></textarea>
+                  </li>
+                  <li class='main'>
+                     <h5 style="font-family:'Calibri';color:white; font-size:18;"> <span class="required1"><b><span style="font-family:'Calibri';">HEADERS</span></b></span></h5>
+                  </li>
+                  <table style="font-family:'Calibri';width:70%">
+                     <tr>
+                        <th>
+                           <center style="font-family:'Calibri';color:white; font-size:15;">NAME</center>
+                        </th>
+                        <th>
+                           <center style="font-family:'Calibri';color:white; font-size:15;">VALUE</center>
+                        </th>
+                     </tr>
+                     <tr>
+                        <td>
+                           <li class='sub_main'>
+                              <label style="font-family:'Calibri';color:white; font-size:15;">Authorization<span class="required"></span> </label>
+                        </td>
+                        <td><input type="text" name="auth" style="font-family:'Calibri';font-size:12;" class="field-divided1" placeholder="Enter Username and Password" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Accept-Language<span class="required"></span></label></td>
+                     <td><input type="text" name="acceptlanguage" style="font-family:'Calibri';font-size:12;" class="field-divided1" placeholder="Enter Language" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Return URL<span class="required"></span></label></td>
+                     <td><input type="text" name="url" class="field-divided1" style="font-family:'Calibri';font-size:12;" placeholder="Enter Return URL" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Request ID<span class="required"></span></label></td>
+                     <td><input type="text" name="reqid" class="field-divided1" style="font-family:'Calibri';font-size:12;" placeholder="Enter Request ID" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Content-Type<span class="required"></span></label></td>
+                     <td><input type="text" name="contenttype" style="font-family:'Calibri';font-size:12;" class="field-divided1" placeholder="Enter Content-Type" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Accept<span class="required"></span></label></td>
+                     <td><input type="text" name="accept" style="font-family:'Calibri';font-size:12;" class="field-divided1"  placeholder="Enter Accept value" /></td>
+                     </tr>
+                </table>
+				<li>
+					<button class="button-size" id="submit" name="submit" type="submit" value="modifyDataPlan" style="font-family:'Calibri';color:black;background:white;width:130px;position:relative;left:80%;" onclick="submit_by_id()"><b>Submit</b></button>
+				</li>
+               </div><br><br>
+				<div class ="column">
+					<li class='main'>
+						<h5 style="font-family:'Calibri';color:white; font-size:18;"><span class = "required1"><b><span style="font-family:'Calibri';">Body</span></b></span></h5>
+					</li>
+				<div style="font-family:'Calibri';color:white;">
+					<li class='sub_main'><label style="font-family:'Calibri';color:white;font-size:15;">SimProfileData<span class="required"></span></label>
+	                    <textarea id="t1" name="profiledata" class="field-long" style="font-family:'Calibri';width:300px; height: 45px;">{'dataPlanId': 0,'deviceId': 'string','action': 'CANCEL','comment': 'string'}</textarea>
+                    </li>
+					</div>
+					<li class="main">
+                       <h5 style="font-family:'Calibri';color:white; font-size:18;"><span class = "required1"><b><span style="font-family:'Calibri';">EXPECTED OUTPUT</span></b></span></h5>
+            </li>
+            <li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Error-Code <span class="required"></span></label>
+               <input type="text" name="ec"  class="field-long" style="font-family:'Calibri';font-size:12;" placeholder="Enter Error-Code"/>
+            <li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Error-Message <span class="required"></span></label>
+               <input type="text" name="em" class="field-divided" style="font-size:12;" placeholder="Enter Error-Message" />
+
+                  <!-- this is api url textbox code -->
+<!--            <li class="main">-->
+<!--               <h5 style="color:white; font-size:15;"><span class = required1"><b><span>API URL</span></b></h5>-->
+<!--            </li>-->
+<!--            <li class='sub_main'>-->
+<!--               <input type="text" name="static_url" class="field-divided" style="font-size:12;" placeholder="API-URL" />-->
+<!--            </li>-->
+               </div>
+            </div>
+
+            <br><br>
+
+         </ul>
+      </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
+
+function selectOnlyThis(id) {
+    for (var i = 1;i <= 2; i++)
+    {
+        document.getElementById(i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+}
+
+<!--document.getElementById("submit").onclick=function(){-->
+
+<!--		alert("Test-case created successfully...");-->
+<!--        window.location= "apicreate.html";-->
+<!--      };-->
+</script>
+<script>
+    function data()
+    {
+    alert("Test-case created successfully")
+    }
+    // Submit form with id function.
+    function submit_by_id() {
+    var name = document.getElementById("createdby").value;
+    var name1 = document.getElementById("tcname").value;
+    // Calling validation function
+    if (name != "" && name1 !="")
+    {
+    data()
+    }
+    }
+</script>
+</html>

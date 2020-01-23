@@ -1,0 +1,65 @@
+<html>
+<head><title>API Automation</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+.button {
+
+  border: none;
+  color: black;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width:200px;
+  background:white;
+  font-family: 'Calibri';
+}
+form{
+	margin:0;
+	padding:0;
+	top:50%;
+	left:50%;
+	position:absolute;
+	transform: translate(-50%, -50%);
+	padding:10px 20px;
+	width:500px;
+	height:350px;
+	border:none;
+	font-family:'Calibri';
+
+}
+p.title{
+    font-family: Calibri;
+    font-size: 30pt;
+    font-style: normal;
+    color:white;
+ }
+</style>
+
+
+</head>
+<body class="bg" background="{{ url_for('static', filename='img/d.png') }}" style="width:100%; height:100%; background-position: center;
+                                            background-repeat: no-repeat;background-size: cover;"><br><br>
+
+<div class="text-center" style=""><p class="title" >CREATE TEST CASES FOR API</p><br></div>
+<form align="center">
+  <fieldset>
+    <legend style="color:white;">SELECT API TO CREATE TEST CASE </legend><br>
+    <p><button formaction="{{ url_for('Get_Sim_Details_API') }}" class="button">Get SIM Details</button></p>
+    <p><button formaction="{{url_for('Get_Sim_State_API')}}" class="button">Get SIM State</button></p>
+    <p><button formaction="{{url_for('Suspend')}}" class="button">Suspend SIM</button></p>
+    <p><button formaction="{{url_for('Reactivate')}}" class="button">Reactivate SIM </button></p>
+    <p><button formaction="{{url_for('Ping')}}" class="button">Ping</button></p>
+	<p><button formaction="{{url_for('Update_Settings')}}" class="button">Update Sim Settings </button></p>
+
+  </fieldset>
+</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>

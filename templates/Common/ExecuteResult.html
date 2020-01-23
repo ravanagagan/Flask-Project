@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>API Automation</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<style>
+button{
+width:200px;
+height:70px;
+background:white;
+font-family:'Calibri';
+font-size:13pt;
+color:black;
+}
+#mytable2 {
+border-collapse: collapse;
+}
+
+#mytable2,td,th{
+border: 1px solid white;
+font-family:'Calibri';
+text-align:center;
+color:white;
+}
+
+</style>
+</head>
+   <body class="bg" background="{{ url_for('static', filename='img/w8.png') }}" style="width:100%; height:100%; background-position: center;">
+<center>
+<h2 style="color:white;font-family:'Calibri';">TEST CASE EXCECUTION REPORT</h2>
+</center>
+<center>
+<button>Total Test case Executed <br> {{len_final}}</button>
+<button>Passed Test case <br>{{len_final}}</button>
+<button><a href=" {{ url_for('FailResult') }}" class="link" onclick="check_clickable()"><span>Failed Test case</span></a>  <br>{{len_final}}</button>
+</center>
+<br>
+<br>
+<center>
+<h3 style="color:white;font-family:'Calibri';">PIE CHART</h3>
+<div id="piechart" ></div>
+</center>
+   <br>
+<br>
+<center>
+<button id = "button2" style="width:350px;height:40px; font-family:'Calibri';">VIEW COMPLETE TEST RUN REPORT</button><center>
+<br>
+<center>
+<table id = "mytable2" style="width:1000px; height:40px;">
+<tr>
+<td>S.No</td>
+<td>RUN ID</td>
+<td>TEST CASE ID</td>
+<td>TEST CASE DESCRIPTION</td>
+<td>RESULT</td>
+</tr>
+    {% for i in range(0,len_final) %}
+    <tr>
+        <td>{{final[i][0]}}</td>
+        <td>run id</td>
+        <td>{{final[i][0]}}</td>
+        <td>{{final[i][4]}}</td>
+        <td>result</td>
+    {%endfor%}
+    </tr>
+</table>
+</center>
+</center></center>
+</body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+var data = google.visualization.arrayToDataTable([
+['Task', 'TEST CASE REPORT'],
+['PASSED TEST CASE', 1],
+['FAILED TEST CASE', 5],
+]);
+
+// Optional; add a title and set the width and height of the chart
+var options = {'title':'TEST CASE REPORT', 'width':450, 'height':300 ,backgroundColor: 'white'};
+// Display the chart inside the <div> element with id="piechart"
+var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+chart.draw(data, options);
+}
+</script>
+<script>
+$(document).ready(function(){
+$("#mytable1").show();
+$("#mytable2").hide();
+
+$("#button1").click(function(){
+$("#text").html("Default List Name");
+$("#mytable2").hide();
+$("#mytable1").show();
+
+});
+
+$("#button2").click(function(){
+$("#mytable1").hide();
+$("#mytable2").show();
+$("#text").html("Second List Name");
+});
+});
+</script>
+<script>
+function check_clickable(){
+data = {{len_final}}
+if (data === 0) {
+document.getElementsByTagName('a')[0].removeAttribute('href');
+}
+}
+</script>
+</html>

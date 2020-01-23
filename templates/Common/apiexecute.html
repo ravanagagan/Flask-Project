@@ -1,0 +1,179 @@
+<html>
+<head>
+    <title>API Automation</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+
+        }
+
+        ul{
+            margin:0 auto;
+            padding:0;
+            top:43%;
+            right:26%;
+            display:inline-block;
+            position:absolute;
+            transform: translate(-50%, -50%);
+            padding:10px 20px;
+            width:250px;
+            border: 1px solid rgba(0,0,0,.5);
+            background:#363636;
+
+        }
+
+        ul li{
+            list-style:none;
+            position:relative;
+            padding:10px;
+            border-bottom: 1px solid rgba(0,0,0,.2);font-family:'Calibri';
+
+        }
+
+        ul li:last-child{
+            border-bottom:none;
+
+        }
+
+        ul li label{
+            font-size:18px;
+            color:#fff;
+            padding-left:30px;
+            cursor:pointer;
+
+        }
+
+        ul li label input{
+            opacity:0;
+            cursor:pointer;
+
+        }
+
+        ul li label .check{
+            position:absolute;
+            top:10px;
+            left:0;
+            width:20px;
+            height:20px;
+            background:#000;
+            display:block;
+            box-sizing:border-box;
+            border-radius:4px;
+        }
+
+        ul li label .check:before{
+            position:absolute;
+            content:'';
+            top:3px;
+            left:3px;
+            right:3px;
+            bottom:3px;
+            background:#000b10;
+            border-radius:2px;
+            transition:0.5s;
+            transform:translate(230px);
+        }
+
+        ul li label input:checked ~ .check:before{
+            background:white;
+
+            box-shadow: 0 0 17px white;
+            transform:translate(0);
+        }
+
+        p  input:submit{
+        top:100px;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link href="{{ url_for('static', filename='css/create1.css') }}" rel="stylesheet" type="text/css" >
+</head>
+<body align="center" class="bg" background=" {{ url_for('static', filename='img/d.png') }}" style="width:100%; height:100%; background-position: center;
+                                            background-repeat: no-repeat;background-size: cover;font-family:'Calibri';"><br>
+<h1 style="color:white;font-family:'Calibri';">&nbsp;&nbsp;<b>SELECT API's FROM HERE TO EXECUTE</b></h1>
+
+
+<form action="http://127.0.0.1:5000/customer/execute/processing" method="POST" name="execute" id="execute">
+<ul>
+    <li>
+        <label>Get SIM Details
+            <input type="checkbox" class="checkitem" name="cbg1[]" value=1 />
+            <span class="check"></span>
+        </label>
+    </li>
+    <li>
+        <label>Get SIM State
+            <input type="checkbox" class="checkitem" value=2 name="cbg1[]"  />
+            <span class="check"></span>
+        </label>
+    </li>
+    <li>
+        <label>Suspend SIM
+            <input type="checkbox" class="checkitem" value=3 name="cbg1[]"  />
+            <span class="check"></span>
+        </label>
+    </li>
+    <li>
+        <label>Reactivate SIM
+            <input type="checkbox" class="checkitem" value=4 name="cbg1[]"  />
+            <span class="check"></span>
+        </label>
+    </li>
+    <li>
+        <label>Update device Settings
+            <input type="checkbox" class="checkitem" value=5 name="cbg1[]"  />
+            <span class="check"></span>
+        </label>
+    </li>
+    <li>
+        <label>Ping
+            <input type="checkbox" class="checkitem" value=6 name="cbg1[]"/>
+            <span class="check"></span>
+        </label>
+    </li>
+    <li>
+        <label>Select/Deselect All
+            <input type="checkbox" id="checkall"/>
+            <span class="check"></span>
+        </label>
+    </li>
+
+</ul>
+    <input formaction="{{ url_for('Processing') }}" type="Submit" name="submit" value="Submit" onclick="return move()" style="position:absolute;margin:0;padding:0;top:73%;left:46%;width:180px;height:35px;background:white;padding: 8px 15px 8px 15px;border: none;color: black;font-family:'Calibri';font-size:14pt;"/>
+</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $("#checkall").change(function(){
+        $(".checkitem").prop("checked", $(this).prop("checked"))
+    })
+    $(".checkitem").change(function(){
+        if($(this).prop("checked")==false){
+            $("#checkall").prop("checked", false)
+        }
+        if($(".checkitem:checked").length == $(".checkitem").length){
+            $("#checkall").prop("checked",true)
+        }
+    })
+</script>
+<script>
+function move(){
+    if ($('#execute :checkbox:checked').length > 0){
+    }
+    else{
+        alert("Atleast check any one of the Check-Box")
+        return false;
+    }
+}
+</script>
+
+</html>
+
+

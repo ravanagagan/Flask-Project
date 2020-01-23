@@ -1,0 +1,240 @@
+<html>
+   <head>
+      <title>API Automation</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link href="{{ url_for('static', filename='css/final.css') }}" rel="stylesheet" type="text/css" >
+      <style>
+         #date{
+             position: relative;
+             width: 235px; height: 30px;
+             color: white;
+         }
+
+         #date:before {
+             position: absolute;
+             top: 5px; left: 12px;
+             content: attr(data-date);
+             display: inline-block;
+             color: black;
+             font-size:14px;
+         }
+
+         #date::-webkit-datetime-edit, #date::-webkit-inner-spin-button, #date::-webkit-clear-button {
+             display: none;
+         }
+
+         #date::-webkit-calendar-picker-indicator {
+             position: absolute;
+             top: 8px;
+             right: 3px;
+             color: black;
+             opacity: 1;
+         }
+          #date1{
+             position: relative;
+             width: 235px; height: 30px;
+             color: white;
+         }
+
+         #date1:before {
+             position: absolute;
+             top: 5px; left: 12px;
+             content: attr(data-date);
+             display: inline-block;
+             color: black;
+             font-size:14px;
+         }
+
+         #date1::-webkit-datetime-edit, #date1::-webkit-inner-spin-button, #date1::-webkit-clear-button {
+             display: none;
+         }
+
+         #date1::-webkit-calendar-picker-indicator {
+             position: absolute;
+             top: 8px;
+             right: 3px;
+             color: black;
+             opacity: 1;
+         }
+      </style>
+   </head>
+   <body class="bg" background="{{ url_for('static', filename='img/w4.jpg') }}" style="width:100%; height:100%; background-position: center;
+      background-repeat: no-repeat;background-size: cover;font-family:'Calibri';">
+      <br>
+      <form action="http://127.0.0.1:5000/create" method="POST" name="get_sim_details" id="get_sim_details">
+         <ul class="form-style-1" >
+            <h5 class="title"><b>ENTER THE DETAILS TO CREATE TESTCASE</b></h5>
+            <br>
+            <div class="row">
+               <div class ="column">
+                  <li class='main'><label style="color:white; font-size:15;font-family:'Calibri';">Created By<span class="required">*</span></label>
+                     <input type="text" id="createdby" name="createdby" style="font-size:12;font-family:'Calibri';" class="field-divided" placeholder="Enter Your Name" title="fill out this row " required=" ">
+                     &nbsp;<label  style="color:white; font-size:15;font-family:'Calibri';">Test Case Name<span class="required">*</span></label>
+                     <input type="text" id="tcname" name="tcname" style="font-size:12;font-family:'Calibri';" class="field-divided" placeholder="Enter the test case name" title="fill out this row " required=" ">
+                  </li>
+                  <li class='main'><label style="color:white; font-size:15;font-family:'Calibri';">Testcase Description<span class="required"></span></label>
+                     <textarea name="desc" id="desc" rows=5 cols="25" class="field-long" style="font-size:12;margin=0px;font-family:'Calibri';"></textarea>
+                  </li>
+                  <li class='main'>
+                     <h5 style="color:white; font-size:18;font-family:'Calibri';"> <span class="required1"><b><span style="font-family:'Calibri';">Headers</span></b></span></h5>
+                  </li>
+                  <table style="width:70%;font-family:'Calibri';">
+                     <tr>
+                        <th>
+                           <center style="color:white; font-size:15;font-family:'Calibri';">NAME</center>
+                        </th>
+                        <th>
+                           <center style="color:white; font-size:15;font-family:'Calibri';">VALUE</center>
+                        </th>
+                     </tr>
+                     <tr>
+                        <td>
+                           <li class='sub_main'>
+                              <label style="color:white; font-size:15;font-family:'Calibri';">Authorization<span class="required"></span> </label>
+                        </td>
+                        <td><input type="text" name="auth" style="font-family:'Calibri';font-size:12;" class="field-divided1" placeholder="Enter Username and Password" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="color:white; font-size:15;">Accept-Language<span class="required"></span></label></td>
+                     <td><input type="text" name="acceptlanguage" style="font-family:'Calibri';font-size:12;" class="field-divided1" placeholder="Enter Language" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="color:white; font-size:15;">Return URL<span class="required"></span></label></td>
+                     <td><input type="text" name="url" class="field-divided1" style="font-family:'Calibri';font-size:12;" placeholder="Enter Return URL" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Request ID<span class="required"></span></label></td>
+                     <td><input type="text" name="reqid" class="field-divided1" style="font-family:'Calibri';font-size:12;" placeholder="Enter Request ID" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Content-Type<span class="required"></span></label></td>
+                     <td><input type="text" name="contenttype" style="font-family:'Calibri';font-size:12;" class="field-divided1" placeholder="Enter Content-Type" /></td>
+                     </tr>
+                     <tr>
+                     <td><li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Accept<span class="required"></span></label></td>
+                     <td><input type="text" name="accept" style="font-family:'Calibri';font-size:12;" class="field-divided1"  placeholder="Enter Accept value" /></td>
+                     </tr>
+                  </table>
+                  <li>
+                     <button class="button-size" name="submit" id="submit" type="submit" value="sessionHistory" onclick="submit_by_id()" style="color:black;background:white;width:130px;position:relative;left:80%;"><b>Submit</b></button>
+                  </li>
+               </div>
+               <br><br>
+               <div class ="column">
+                  <li class='main'>
+                     <h5 style="font-family:'Calibri';color:white; font-size:18;"><span class="required1"><b><span style="font-family:'Calibri';">QUERY PARAMETERS</span></b></span></h5>
+                  </li>
+                  <div style="font-family:'Calibri';color:white;">
+                     <li class='sub_main'><span class ="required"></span>
+                        <input type="checkbox" id="prodname_1" value="IMSI" name="prodname_0" onclick="selectOnlyThis(this.id)" >IMSI</input>&nbsp;
+                        <input type="checkbox" id="prodname_2" value="ICCID" name="prodname_0" onclick="selectOnlyThis(this.id)">ICCID</input>
+                        <input type="checkbox" id="prodname_3" value="EUICCID" name="prodname_0" onclick="selectOnlyThis(this.id)">EUICCID</input>
+                     </li>
+                     <li class="sub_main">
+                        <input type="text" class="field-long" name="item_0"  id="item_0" value=""/>
+                     </li>
+                  </div>
+
+                  <li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">From Date<span class="required"></span></label>
+                     <input type="date" id="date" name="date" data-date="" data-date-format="YYYY-MM-DD" value="2015-08-09" class="field-long" style="font-family:'Calibri';font-size:12;"/>
+                  <li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">To Date<span class="required"></span></label>
+                     <input type="date" id="date1" name="date1" data-date="" data-date-format="YYYY-MM-DD" value="2015-08-09" class="field-divided" style="font-family:'Calibri';font-size:12;" />
+                  <li class="main">
+                  <h5 style="color:white; font-size:18;"><span class = "required1"><b><span style="font-family:'Calibri';">EXPECTED OUTPUT</span></b></span></h5>
+                  </li>
+                  <li class='sub_main'><label style="font-family:'Calibri';color:white; font-size:15;">Error-Code <span class="required"></span></label>
+                     <input type="text" name="ec"  class="field-long" style="font-family:'Calibri';font-size:12;" placeholder="Enter Error-Code"/>
+                  <li class='sub_main'>
+                     <label style="font-family:'Calibri';color:white; font-size:15;">Error-Message <span class="required"></span></label>
+                     <input type="text" name="em" class="field-divided" style="font-family:'Calibri';font-size:12;" placeholder="Enter Error-Message" />
+               </div>
+            </div>
+            <br><br>
+         </ul>
+      </form>
+   </body>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+   <script>
+      function isNumberKey(evt){
+      var charCode = (evt.which) ? evt.which : evt.keyCode
+      if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+      return true;
+      }
+
+
+      function selectOnlyThis(id) {
+      for (var i = 1;i <= 2; i++)
+      {
+          document.getElementById(i).checked = false;
+      }
+      document.getElementById(id).checked = true;
+      }
+
+      $("#date").on("change", function() {
+          this.setAttribute(
+              "data-date",
+              moment(this.value, "YYYY-MM-DD")
+              .format( this.getAttribute("data-date-format") )
+          )
+      }).trigger("change")
+
+      $("#date1").on("change", function() {
+          this.setAttribute(
+              "data-date",
+              moment(this.value, "YYYY-MM-DD")
+              .format( this.getAttribute("data-date-format") )
+          )
+      }).trigger("change")
+
+
+   </script>
+   <script>
+      $(document).ready(function (e) {
+          var $items = $('input[id^="item_"]');
+          var checkboxes = $('input[id ^= "prodname_"]').change(function () {
+              var id = $(this).attr('id');
+              var arr = id.split('_');
+              valueChecked = $(this).val();
+
+              var counter = checkboxes.filter(':checked').length;
+
+              if ($(this).is(':checked')) {
+                  if (counter > 1) {
+                      alert('Already checked 1 items');
+                      $(this).prop('checked', false);
+                  } else {
+                      // Add to the first available slot
+                      $items.filter(function(){return $(this).val() == ""}).first().val(valueChecked);
+                  }
+              } else {
+                  // Remove the matching value
+                  $items.filter(function(){return $(this).val() == valueChecked;}).first().val('');
+              }
+          });
+      });
+
+   </script>
+   <script>
+      function data()
+      {
+      alert("Test-case created successfully")
+      }
+      // Submit form with id function.
+      function submit_by_id() {
+      var name = document.getElementById("createdby").value;
+      var name1 = document.getElementById("tcname").value;
+      // Calling validation function
+      if (name != "" && name1 !="")
+      {
+      data()
+      }
+      }
+
+   </script>
+</html>
